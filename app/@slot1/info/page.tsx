@@ -4,18 +4,20 @@ import { Slash } from '@/components/Slash'
 import { Slot } from '@/components/Slot'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
-export default function ParentPage() {
+export default function ParentPageSlot1Info() {
   return (
-    <Card className="w-full h-full bg-amber-50">
+    <Card className="w-full h-full bg-violet-50">
       <CardHeader>
         <CardTitle>
           <Parent />
           <Slash />
-          <Slot>children</Slot>
+          <Slot>1</Slot>
+          <Slash />
+          Info
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <Links showLinks={['user']} />
+        <Links showLinks={['', 'about', 'common']} />
       </CardContent>
     </Card>
   )
