@@ -18,6 +18,7 @@ type PathItem = {
 type Props = {
   cardContent?: React.ReactNode
   children?: React.ReactNode
+  label?: string
   default?: boolean
   color?:
     | 'green'
@@ -33,8 +34,8 @@ type Props = {
     | 'fuchsia'
     | 'indigo'
     | 'inherit'
-  path: PathItem[]
-  showLinks: Link[]
+  path?: PathItem[]
+  showLinks?: Link[]
 }
 
 export function CardContainer({
@@ -43,6 +44,7 @@ export function CardContainer({
   default: isDefault = false,
   color = 'gray',
   path,
+  label,
   showLinks
 }: Props) {
   const cardColor = {
@@ -65,15 +67,16 @@ export function CardContainer({
     <Card className={cn('w-full h-full', cardColor)}>
       <CardHeader>
         <CardTitle>
-          {path.map((item, index) => (
-            <Fragment key={item.label + !!item.slot}>
-              <span>
-                {item.slot && '@Slot'}
-                {item.label}
-              </span>
-              {index !== path.length - 1 && <Slash />}
-            </Fragment>
-          ))}
+          {label ||
+            path?.map((item, index) => (
+              <Fragment key={item.label + !!item.slot}>
+                <span>
+                  {item.slot && '@Slot'}
+                  {item.label}
+                </span>
+                {index !== path.length - 1 && <Slash />}
+              </Fragment>
+            ))}
           {isDefault && <span className="text-red-500"> (Default)</span>}
         </CardTitle>
         <CardDescription>
