@@ -10,7 +10,7 @@ import { cn } from '@/lib/utils'
 import { Breadcrumb, type PathItem } from './breadcrumb'
 
 export type CardContainerProps = {
-  variant: 'default' | 'layout' | 'page' | 'loading'
+  variant: 'default' | 'layout' | 'page' | 'loading' | 'error'
   children: React.ReactNode
   routePath: PathItem[]
   className?: string
@@ -30,7 +30,8 @@ export function CardContainer({
     'bg-green-50': variant === 'default',
     'bg-blue-50': variant === 'layout',
     'bg-amber-50': variant === 'page',
-    'bg-gray-50': variant === 'loading'
+    'bg-gray-50': variant === 'loading',
+    'bg-red-50': variant === 'error'
   }
 
   return (
@@ -49,6 +50,9 @@ export function CardContainer({
           )}
           {variant === 'loading' && (
             <span className="text-gray-500 font-bold">loading.tsx</span>
+          )}
+          {variant === 'error' && (
+            <span className="text-red-500 font-bold">error.tsx</span>
           )}
         </CardTitle>
 
