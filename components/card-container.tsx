@@ -71,7 +71,7 @@ export function CardContainer({
             path?.map((item, index) => (
               <Fragment key={item.label + !!item.slot}>
                 <span>
-                  {item.slot && '@Slot'}
+                  {item.slot && '@Slot '}
                   {item.label}
                 </span>
                 {index !== path.length - 1 && <Slash />}
