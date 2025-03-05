@@ -1,5 +1,4 @@
-import Links, { type Link } from '@/components/links'
-import { Slash } from '@/components/slash'
+import Links, { type Link } from '@/components/links-list'
 import {
   Card,
   CardContent,
@@ -74,7 +73,9 @@ export function CardContainer({
                   {item.slot && '@Slot '}
                   {item.label}
                 </span>
-                {index !== path.length - 1 && <Slash />}
+                {index !== path.length - 1 && (
+                  <span className="font-bold text-blue-500"> / </span>
+                )}
               </Fragment>
             ))}
           {isDefault && <span className="text-red-500"> (Default)</span>}
