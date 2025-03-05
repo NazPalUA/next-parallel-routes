@@ -10,14 +10,13 @@ export function Container({ children, default: isDefault = false }: Props) {
     <CardContainer
       cardContent={children}
       default={isDefault}
-      color="lime"
+      color="gray"
       path={[
         { label: 'Parent' },
-        { label: '2', slot: true },
-        { label: 'Dashboard' },
-        { label: 'children', slot: true }
+        { label: 'children', slot: true },
+        { label: 'User' }
       ]}
-      showLinks={[]}
+      showLinks={['']}
     />
   )
 }

@@ -9,6 +9,12 @@ import {
   CardTitle
 } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
+import { Fragment } from 'react'
+
+type PathItem = {
+  label: string
+  slot?: boolean
+}
 
 type Props = {
   cardContent: React.ReactNode
@@ -26,7 +32,7 @@ type Props = {
     | 'violet'
     | 'fuchsia'
     | 'indigo'
-  path: React.ReactNode[]
+  path: PathItem[]
   showLinks: Link[]
 }
 
@@ -68,10 +74,13 @@ export function CardContainer({
       <CardHeader>
         <CardTitle>
           {path.map((item, index) => (
-            <div key={index + path.length + 1} className="inline-block">
-              {item}
+            <Fragment key={item.label + !!item.slot}>
+              <span>
+                {item.slot && '@Slot'}
+                {item.label}
+              </span>
               {index !== path.length - 1 && <Slash />}
-            </div>
+            </Fragment>
           ))}
           {isDefault && <DefaultParentheses />}
         </CardTitle>

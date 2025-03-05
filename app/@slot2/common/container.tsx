@@ -1,6 +1,4 @@
 import { CardContainer } from '@/components/card-container'
-import { Parent } from '@/components/Parent'
-import { Slot } from '@/components/Slot'
 
 type Props = {
   children: React.ReactNode
@@ -13,7 +11,11 @@ export function Container({ children, default: isDefault = false }: Props) {
       cardContent={children}
       default={isDefault}
       color="green"
-      path={[<Parent key={1} />, <Slot key={2}>2</Slot>, 'Common']}
+      path={[
+        { label: 'Parent' },
+        { label: '2', slot: true },
+        { label: 'Common' }
+      ]}
       showLinks={['', 'dashboard']}
     />
   )
