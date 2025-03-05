@@ -68,10 +68,10 @@ export function CardContainer({
       <CardHeader>
         <CardTitle>
           {path.map((item, index) => (
-            <>
+            <div key={index + path.length + 1} className="inline-block">
               {item}
               {index !== path.length - 1 && <Slash />}
-            </>
+            </div>
           ))}
           {isDefault && <DefaultParentheses />}
         </CardTitle>
