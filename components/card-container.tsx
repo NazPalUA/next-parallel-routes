@@ -7,63 +7,61 @@ import {
   CardTitle
 } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
+import { Breadcrumb, type PathItem } from './breadcrumb'
 
-type Props = {
-  cardContent?: React.ReactNode
-  children?: React.ReactNode
-  title: React.ReactNode
-  color?:
-    | 'green'
-    | 'blue'
-    | 'amber'
-    | 'lime'
-    | 'red'
-    | 'purple'
-    | 'cyan'
-    | 'teal'
-    | 'gray'
-    | 'violet'
-    | 'fuchsia'
-    | 'indigo'
-    | 'inherit'
+export type CardContainerProps = {
+  variant: 'default' | 'layout' | 'page' | 'loading'
+  children: React.ReactNode
+  routePath: PathItem[]
+  className?: string
   showLinks?: Link[]
+  backLink?: boolean
 }
 
 export function CardContainer({
-  cardContent,
+  variant,
   children,
-  color = 'gray',
-  title,
-  showLinks
-}: Props) {
+  className,
+  routePath,
+  showLinks,
+  backLink
+}: CardContainerProps) {
   const cardColor = {
-    'bg-green-100': color === 'green',
-    'bg-blue-100': color === 'blue',
-    'bg-amber-100': color === 'amber',
-    'bg-lime-100': color === 'lime',
-    'bg-red-100': color === 'red',
-    'bg-purple-100': color === 'purple',
-    'bg-cyan-100': color === 'cyan',
-    'bg-teal-100': color === 'teal',
-    'bg-gray-100': color === 'gray',
-    'bg-violet-100': color === 'violet',
-    'bg-fuchsia-100': color === 'fuchsia',
-    'bg-indigo-100': color === 'indigo',
-    'bg-inherit': color === 'inherit'
+    'bg-green-50': variant === 'default',
+    'bg-blue-50': variant === 'layout',
+    'bg-amber-50': variant === 'page',
+    'bg-gray-50': variant === 'loading'
   }
 
   return (
-    <Card className={cn('w-full h-full', cardColor)}>
+    <Card className={cn('w-full h-full', cardColor, className)}>
       <CardHeader>
-        <CardTitle>{title}</CardTitle>
+        <CardTitle className="flex justify-between items-center gap-2">
+          <Breadcrumb path={routePath} />
+          {variant === 'default' && (
+            <span className="text-red-500 font-bold">default.tsx</span>
+          )}
+          {variant === 'layout' && (
+            <span className="text-blue-500 font-bold">layout.tsx</span>
+          )}
+          {variant === 'page' && (
+            <span className="text-green-500 font-bold">page.tsx</span>
+          )}
+          {variant === 'loading' && (
+            <span className="text-gray-500 font-bold">loading.tsx</span>
+          )}
+        </CardTitle>
+
         <CardDescription>
-          <Links showLinks={showLinks} />
+          <Links showLinks={showLinks} backLink={backLink} />
         </CardDescription>
       </CardHeader>
       <CardContent className="h-full">
-        {children || (
-          <div className="h-full flex justify-center items-center border-1 rounded-md">
-            {cardContent}
+        {variant === 'layout' ? (
+          children
+        ) : (
+          <div className="h-full flex justify-center items-center border-1 border-black rounded-md">
+            {children}
           </div>
         )}
       </CardContent>

@@ -1,5 +1,5 @@
 import { Container } from './container'
 
 export default function Loading() {
-  return <Container>Loading...</Container>
+  return <Container variant="loading">Loading...</Container>
 }

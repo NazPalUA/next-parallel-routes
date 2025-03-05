@@ -1,5 +1,5 @@
 import { Container } from './container'
 
-export default function DashboardPageCardSlot() {
-  return <Container default>Data</Container>
+export default function Default() {
+  return <Container variant="default">Data</Container>
 }

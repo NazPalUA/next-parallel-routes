@@ -12,10 +12,11 @@ export function Container({
       variant={variant}
       routePath={[
         { label: 'Parent' },
-        { label: 'children', slot: true },
-        { label: 'User' }
+        { label: '2', slot: true },
+        { label: 'Dashboard' },
+        { label: 'children', slot: true }
       ]}
-      showLinks={['', 'user']}
+      showLinks={['dashboard']}
     >
       {children}
     </CardContainer>

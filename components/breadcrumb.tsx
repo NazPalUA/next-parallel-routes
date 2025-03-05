@@ -1,37 +1,28 @@
 import { Fragment } from 'react'
 
-type PathItem = {
+export type PathItem = {
   label: string
   slot?: boolean
 }
 
 type Props = {
   path?: PathItem[]
-  layout?: boolean
-  default?: boolean
 }
 
-export function Breadcrumb({
-  path,
-  layout: isLayout = false,
-  default: isDefault = false
-}: Props) {
-  console.log('isLayout', isLayout)
+export function Breadcrumb({ path }: Props) {
   return (
-    <div>
+    <div className="inline-flex items-center gap-0.5 lowercase italic font-bold text-sm">
       {path?.map((item, index) => (
         <Fragment key={item.label + !!item.slot}>
-          <span>
-            {item.slot && '@Slot '}
+          <span className="">
+            {item.slot && '@slot-'}
             {item.label}
           </span>
           {index !== path.length - 1 && (
-            <span className="font-bold text-blue-500"> / </span>
+            <span className=" text-blue-500">/</span>
           )}
         </Fragment>
       ))}
-      {isDefault && <span className="text-red-500"> (Default)</span>}
-      {isLayout && <span className="text-blue-500"> (Layout)</span>}
     </div>
   )
 }

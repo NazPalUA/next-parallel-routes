@@ -1,4 +1,5 @@
 import { BackLink } from '@/components/back-link'
+import { cn } from '@/lib/utils'
 import Link from 'next/link'
 
 const allLinks = [
@@ -15,17 +16,23 @@ export type Link = (typeof allLinks)[number]['href']
 
 type Props = {
   showLinks?: Link[]
+  backLink?: boolean
 }
 
-export default function Links({ showLinks }: Props) {
+export default function Links({ showLinks, backLink }: Props) {
   const links = !showLinks
     ? allLinks
     : allLinks.filter(link => showLinks.includes(link.href))
 
   return (
-    <div>
-      <BackLink />
-      <div className="flex gap-2">
+    <div
+      className={cn(
+        'flex gap-2 flex-col',
+        backLink && 'flex-row justify-between'
+      )}
+    >
+      {backLink && <BackLink />}
+      <div className="flex gap-2 justify-end">
         {links.map(link => (
           <Link
             href={'/' + link.href}

@@ -1,4 +1,3 @@
-import { Breadcrumb } from '@/components/breadcrumb'
 import { CardContainer } from '@/components/card-container'
 import './globals.css'
 
@@ -16,8 +15,10 @@ export default function RootLayout({
       <body className="antialiased">
         <main className="w-full h-screen flex items-center justify-center p-5">
           <CardContainer
-            color="inherit"
-            title={<Breadcrumb layout={true} path={[{ label: 'Parent' }]} />}
+            variant="layout"
+            routePath={[{ label: 'Parent' }]}
+            showLinks={['']}
+            backLink
           >
             <div className="flex gap-4 h-full">
               <div className="w-1/3">{children}</div>

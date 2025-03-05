@@ -1,27 +1,24 @@
-import { Breadcrumb } from '@/components/breadcrumb'
-import { CardContainer } from '@/components/card-container'
+import {
+  CardContainer,
+  type CardContainerProps
+} from '@/components/card-container'
+import { slot1Links } from '../_lib/slot1-links'
 
-type Props = {
-  children: React.ReactNode
-  default?: boolean
-}
-
-export function Container({ children, default: isDefault = false }: Props) {
+export function Container({
+  children,
+  variant
+}: Pick<CardContainerProps, 'variant' | 'children'>) {
   return (
     <CardContainer
-      cardContent={children}
-      title={
-        <Breadcrumb
-          default={isDefault}
-          path={[
-            { label: 'Parent' },
-            { label: '1', slot: true },
-            { label: 'Common' }
-          ]}
-        />
-      }
-      color="fuchsia"
-      showLinks={['', 'about', 'info']}
-    />
+      variant={variant}
+      routePath={[
+        { label: 'Parent' },
+        { label: '1', slot: true },
+        { label: 'Common' }
+      ]}
+      showLinks={slot1Links}
+    >
+      {children}
+    </CardContainer>
   )
 }

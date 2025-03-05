@@ -1,5 +1,5 @@
 import { Container } from './container'
 
-export default function ParentPageSlot1Info() {
-  return <Container>Data</Container>
+export default function Page() {
+  return <Container variant="page">Data</Container>
 }
