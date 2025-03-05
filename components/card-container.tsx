@@ -64,7 +64,7 @@ export function CardContainer({
         {variant === 'layout' ? (
           children
         ) : (
-          <div className="h-full flex justify-center items-center border-1 border-black rounded-md">
+          <div className="h-full flex justify-center items-center">
             {children}
           </div>
         )}
