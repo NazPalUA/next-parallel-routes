@@ -1,24 +1,10 @@
-import { DefaultParentheses } from '@/components/DefaultParentheses'
-import Links from '@/components/Links'
-import { Parent } from '@/components/Parent'
-import { Slash } from '@/components/Slash'
-import { Slot } from '@/components/Slot'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { fakeAuth } from '@/lib/fakeAuth'
+import { getDataFromDatabase } from '@/lib/getDataFromDatabase'
+import { Container } from './container'
 
-export default function ParentDefault() {
-  return (
-    <Card className="w-full h-full bg-amber-100">
-      <CardHeader>
-        <CardTitle>
-          <Parent />
-          <Slash />
-          <Slot>children</Slot>
-          <DefaultParentheses />
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        <Links showLinks={['user']} />
-      </CardContent>
-    </Card>
-  )
+export default async function ParentDefault() {
+  await fakeAuth()
+  const data = await getDataFromDatabase()
+
+  return <Container default>{data}</Container>
 }

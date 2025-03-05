@@ -11,7 +11,7 @@ const allLinks = [
   { href: 'dashboard/archive', label: 'Archive' }
 ] as const
 
-type Link = (typeof allLinks)[number]['href']
+export type Link = (typeof allLinks)[number]['href']
 
 type Props = {
   showLinks?: Link[]
