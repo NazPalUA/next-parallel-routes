@@ -1,4 +1,4 @@
-import Links from '@/components/Links'
+import Links from '@/components/links'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import './globals.css'
 

@@ -1,6 +1,5 @@
-import { DefaultParentheses } from '@/components/DefaultParentheses'
-import Links, { Link } from '@/components/Links'
-import { Slash } from '@/components/Slash'
+import Links, { Link } from '@/components/links'
+import { Slash } from '@/components/slash'
 import {
   Card,
   CardContent,
@@ -17,7 +16,8 @@ type PathItem = {
 }
 
 type Props = {
-  cardContent: React.ReactNode
+  cardContent?: React.ReactNode
+  children?: React.ReactNode
   default?: boolean
   color?:
     | 'green'
@@ -32,43 +32,35 @@ type Props = {
     | 'violet'
     | 'fuchsia'
     | 'indigo'
+    | 'inherit'
   path: PathItem[]
   showLinks: Link[]
 }
 
 export function CardContainer({
   cardContent,
+  children,
   default: isDefault = false,
   color = 'gray',
   path,
   showLinks
 }: Props) {
   const cardColor = {
-    'bg-green-50': color === 'green',
-    'bg-green-100': color === 'green' && isDefault,
-    'bg-blue-50': color === 'blue',
-    'bg-blue-100': color === 'blue' && isDefault,
-    'bg-amber-50': color === 'amber',
-    'bg-amber-100': color === 'amber' && isDefault,
-    'bg-lime-50': color === 'lime',
-    'bg-lime-100': color === 'lime' && isDefault,
-    'bg-red-50': color === 'red',
-    'bg-red-100': color === 'red' && isDefault,
-    'bg-purple-50': color === 'purple',
-    'bg-purple-100': color === 'purple' && isDefault,
-    'bg-cyan-50': color === 'cyan',
-    'bg-cyan-100': color === 'cyan' && isDefault,
-    'bg-teal-50': color === 'teal',
-    'bg-teal-100': color === 'teal' && isDefault,
-    'bg-gray-50': color === 'gray',
-    'bg-gray-100': color === 'gray' && isDefault,
-    'bg-violet-50': color === 'violet',
-    'bg-violet-100': color === 'violet' && isDefault,
-    'bg-fuchsia-50': color === 'fuchsia',
-    'bg-fuchsia-100': color === 'fuchsia' && isDefault,
-    'bg-indigo-50': color === 'indigo',
-    'bg-indigo-100': color === 'indigo' && isDefault
+    'bg-green-100': color === 'green',
+    'bg-blue-100': color === 'blue',
+    'bg-amber-100': color === 'amber',
+    'bg-lime-100': color === 'lime',
+    'bg-red-100': color === 'red',
+    'bg-purple-100': color === 'purple',
+    'bg-cyan-100': color === 'cyan',
+    'bg-teal-100': color === 'teal',
+    'bg-gray-100': color === 'gray',
+    'bg-violet-100': color === 'violet',
+    'bg-fuchsia-100': color === 'fuchsia',
+    'bg-indigo-100': color === 'indigo',
+    'bg-inherit': color === 'inherit'
   }
+
   return (
     <Card className={cn('w-full h-full', cardColor)}>
       <CardHeader>
@@ -82,16 +74,18 @@ export function CardContainer({
               {index !== path.length - 1 && <Slash />}
             </Fragment>
           ))}
-          {isDefault && <DefaultParentheses />}
+          {isDefault && <span className="text-red-500"> (Default)</span>}
         </CardTitle>
         <CardDescription>
           <Links showLinks={showLinks} />
         </CardDescription>
       </CardHeader>
       <CardContent className="h-full">
-        <div className="h-full flex justify-center items-center border-1 rounded-md">
-          {cardContent}
-        </div>
+        {children || (
+          <div className="h-full flex justify-center items-center border-1 rounded-md">
+            {cardContent}
+          </div>
+        )}
       </CardContent>
     </Card>
   )

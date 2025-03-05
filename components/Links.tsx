@@ -1,4 +1,4 @@
-import { BackLink } from '@/components/BackLink'
+import { BackLink } from '@/components/back-link'
 import Link from 'next/link'
 
 const allLinks = [

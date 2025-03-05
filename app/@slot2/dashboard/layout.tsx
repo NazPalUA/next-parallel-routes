@@ -1,8 +1,4 @@
-import Links from '@/components/Links'
-import { Parent } from '@/components/Parent'
-import { Slash } from '@/components/Slash'
-import { Slot } from '@/components/Slot'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { CardContainer } from '@/components/card-container'
 
 export default function RootLayout({
   children,
@@ -12,21 +8,20 @@ export default function RootLayout({
   slotCard: React.ReactNode
 }>) {
   return (
-    <Card className="w-full h-full ">
-      <CardHeader>
-        <CardTitle>
-          <Parent />
-          <Slash />
-          <Slot>2</Slot>
-          <Slash />
-          Dashboard
-        </CardTitle>
-        <Links showLinks={['', 'dashboard', 'common']} />
-      </CardHeader>
-      <CardContent className="flex gap-4 h-full">
+    <CardContainer
+      default={false}
+      color="inherit"
+      path={[
+        { label: 'Parent' },
+        { label: '2', slot: true },
+        { label: 'Dashboard' }
+      ]}
+      showLinks={['', 'dashboard', 'common']}
+    >
+      <div className="flex gap-4 h-full">
         <div className="flex-1">{children}</div>
         <div className="flex-1">{slotCard}</div>
-      </CardContent>
-    </Card>
+      </div>
+    </CardContainer>
   )
 }
