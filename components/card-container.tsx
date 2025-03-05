@@ -1,4 +1,4 @@
-import Links, { Link } from '@/components/links'
+import Links, { type Link } from '@/components/links'
 import { Slash } from '@/components/slash'
 import {
   Card,
