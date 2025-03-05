@@ -7,18 +7,11 @@ import {
   CardTitle
 } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
-import { Fragment } from 'react'
-
-type PathItem = {
-  label: string
-  slot?: boolean
-}
 
 type Props = {
   cardContent?: React.ReactNode
   children?: React.ReactNode
-  label?: string
-  default?: boolean
+  title: React.ReactNode
   color?:
     | 'green'
     | 'blue'
@@ -33,17 +26,14 @@ type Props = {
     | 'fuchsia'
     | 'indigo'
     | 'inherit'
-  path?: PathItem[]
   showLinks?: Link[]
 }
 
 export function CardContainer({
   cardContent,
   children,
-  default: isDefault = false,
   color = 'gray',
-  path,
-  label,
+  title,
   showLinks
 }: Props) {
   const cardColor = {
@@ -65,21 +55,7 @@ export function CardContainer({
   return (
     <Card className={cn('w-full h-full', cardColor)}>
       <CardHeader>
-        <CardTitle>
-          {label ||
-            path?.map((item, index) => (
-              <Fragment key={item.label + !!item.slot}>
-                <span>
-                  {item.slot && '@Slot '}
-                  {item.label}
-                </span>
-                {index !== path.length - 1 && (
-                  <span className="font-bold text-blue-500"> / </span>
-                )}
-              </Fragment>
-            ))}
-          {isDefault && <span className="text-red-500"> (Default)</span>}
-        </CardTitle>
+        <CardTitle>{title}</CardTitle>
         <CardDescription>
           <Links showLinks={showLinks} />
         </CardDescription>

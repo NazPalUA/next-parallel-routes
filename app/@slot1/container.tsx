@@ -1,3 +1,4 @@
+import { Breadcrumb } from '@/components/breadcrumb'
 import { CardContainer } from '@/components/card-container'
 
 type Props = {
@@ -9,9 +10,13 @@ export function Container({ children, default: isDefault = false }: Props) {
   return (
     <CardContainer
       cardContent={children}
-      default={isDefault}
+      title={
+        <Breadcrumb
+          default={isDefault}
+          path={[{ label: 'Parent' }, { label: '1', slot: true }]}
+        />
+      }
       color="blue"
-      path={[{ label: 'Parent' }, { label: '1', slot: true }]}
       showLinks={['', 'about', 'info', 'common']}
     />
   )

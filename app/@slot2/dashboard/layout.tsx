@@ -1,3 +1,4 @@
+import { Breadcrumb } from '@/components/breadcrumb'
 import { CardContainer } from '@/components/card-container'
 
 export default function RootLayout({
@@ -9,13 +10,17 @@ export default function RootLayout({
 }>) {
   return (
     <CardContainer
-      default={false}
+      title={
+        <Breadcrumb
+          layout={true}
+          path={[
+            { label: 'Parent' },
+            { label: '2', slot: true },
+            { label: 'Dashboard' }
+          ]}
+        />
+      }
       color="inherit"
-      path={[
-        { label: 'Parent' },
-        { label: '2', slot: true },
-        { label: 'Dashboard' }
-      ]}
       showLinks={['', 'dashboard', 'common']}
     >
       <div className="flex gap-4 h-full">
