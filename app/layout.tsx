@@ -21,8 +21,8 @@ export default function RootLayout({
               <Links />
             </CardHeader>
             <CardContent className="flex gap-4 h-full">
-              <div className="flex-1">{children}</div>
-              <div className="flex-1 flex flex-col gap-4">
+              <div className="w-1/3">{children}</div>
+              <div className="w-2/3 flex flex-col gap-4">
                 {slot1}
                 {slot2}
               </div>

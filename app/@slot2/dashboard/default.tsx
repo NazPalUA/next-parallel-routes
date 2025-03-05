@@ -1,3 +1,4 @@
+import { DefaultParentheses } from '@/components/DefaultParentheses'
 import Links from '@/components/Links'
 import { Parent } from '@/components/Parent'
 import { Slash } from '@/components/Slash'
@@ -6,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 export default function ParentPageSlot2Dashboard() {
   return (
-    <Card className="w-full h-full bg-lime-50">
+    <Card className="w-full h-full bg-lime-100">
       <CardHeader>
         <CardTitle>
           <Parent />
@@ -16,6 +17,7 @@ export default function ParentPageSlot2Dashboard() {
           Dashboard
           <Slash />
           <Slot>children</Slot>
+          <DefaultParentheses />
         </CardTitle>
       </CardHeader>
       <CardContent>

@@ -1,12 +1,13 @@
+import { DefaultParentheses } from '@/components/DefaultParentheses'
 import Links from '@/components/Links'
 import { Parent } from '@/components/Parent'
 import { Slash } from '@/components/Slash'
 import { Slot } from '@/components/Slot'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
-export default function ParentPageSlot2Dashboard() {
+export default function DashboardPageCardSlot() {
   return (
-    <Card className="w-full h-full bg-lime-50">
+    <Card className="w-full h-full bg-green-100">
       <CardHeader>
         <CardTitle>
           <Parent />
@@ -15,11 +16,12 @@ export default function ParentPageSlot2Dashboard() {
           <Slash />
           Dashboard
           <Slash />
-          <Slot>children</Slot>
+          <Slot>Card</Slot>
+          <DefaultParentheses />
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <Links showLinks={[]} />
+        <Links showLinks={['dashboard/archive']} />
       </CardContent>
     </Card>
   )

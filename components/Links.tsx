@@ -7,7 +7,8 @@ const allLinks = [
   { href: 'common', label: 'Common' },
   { href: 'about', label: 'About' },
   { href: 'info', label: 'Info' },
-  { href: 'dashboard', label: 'Dashboard' }
+  { href: 'dashboard', label: 'Dashboard' },
+  { href: 'dashboard/archive', label: 'Archive' }
 ] as const
 
 type Link = (typeof allLinks)[number]['href']

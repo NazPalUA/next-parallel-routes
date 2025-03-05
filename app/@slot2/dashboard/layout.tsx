@@ -4,9 +4,15 @@ import { Slash } from '@/components/Slash'
 import { Slot } from '@/components/Slot'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
-export default function ParentPageSlot2Dashboard() {
+export default function RootLayout({
+  children,
+  slotCard
+}: Readonly<{
+  children: React.ReactNode
+  slotCard: React.ReactNode
+}>) {
   return (
-    <Card className="w-full h-full bg-lime-50">
+    <Card className="w-full h-full ">
       <CardHeader>
         <CardTitle>
           <Parent />
@@ -14,12 +20,12 @@ export default function ParentPageSlot2Dashboard() {
           <Slot>2</Slot>
           <Slash />
           Dashboard
-          <Slash />
-          <Slot>children</Slot>
         </CardTitle>
+        <Links showLinks={['', 'dashboard', 'common']} />
       </CardHeader>
-      <CardContent>
-        <Links showLinks={[]} />
+      <CardContent className="flex gap-4 h-full">
+        <div className="flex-1">{children}</div>
+        <div className="flex-1">{slotCard}</div>
       </CardContent>
     </Card>
   )
