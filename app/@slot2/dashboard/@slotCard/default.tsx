@@ -1,5 +1,10 @@
+import { fakeAuth } from '@/lib/fakeAuth'
+import { getDataFromDatabase } from '@/lib/getDataFromDatabase'
 import { Container } from './container'
 
-export default function Default() {
-  return <Container variant="default">Data</Container>
+export default async function Default() {
+  await fakeAuth()
+  const data = await getDataFromDatabase()
+
+  return <Container variant="default">{data}</Container>
 }
